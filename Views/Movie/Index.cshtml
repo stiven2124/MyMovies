@@ -1,0 +1,25 @@
+﻿<!--User Details Page-->
+@model MyMovies.Models.Movie
+
+@{
+    ViewBag.Title = Model.Title;
+}
+
+<h2>@Model.Title</h2>
+
+<div>
+    <strong>Genre:</strong> @Model.Genre
+</div>
+
+<div class="row">
+    <div class="col-md-8">
+        <strong>Description:</strong>
+        <p>@Model.Description</p>
+    </div>
+    <div class="col-md-4">
+        <strong>Rating:</strong>
+        <p>@Model.AverageRating </p>
+    </div>
+    <a href="@Url.Action("Rate", "Movie", new { id = Model.MovieId })" class="btn btn-primary" style="margin-top: 20px;">Rate</a>
+</div>
+

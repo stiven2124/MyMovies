@@ -1,0 +1,35 @@
+﻿<!-- Admin Movie List--> 
+@model IEnumerable<MyMovies.Models.Movie>
+
+<h2>Manage Movies</h2>
+
+<!-- Button to add a new movie -->
+<a href="@Url.Action("Create", "MovieListAdmin")" class="btn btn-success">New Movie</a>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Genre</th>
+            <th></th>
+            <th>Actions</th> <!-- Add an additional column for admin actions -->
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var movie in Model)
+        {
+            <tr>
+                <td>@movie.Title</td>
+                <td>@movie.Genre</td>
+                <td>
+                    <a href="@Url.Action("Index", "Movie", new { id = movie.MovieId })" class="btn btn-info">View Details</a>
+                </td>
+                <td>
+                    <!-- Edit and Delete buttons -->
+                    <a href="@Url.Action("Edit", "MovieListAdmin", new { id = movie.MovieId })" class="btn btn-warning">Edit</a>
+                    <a href="@Url.Action("Delete", "MovieListAdmin", new { id = movie.MovieId })" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
